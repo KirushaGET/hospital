@@ -1,0 +1,27 @@
+.head {
+  position: absolute;
+  width: 100vw;
+  height: 6vw;
+
+  background: #C5E9FF;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.registrH1{
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.headerImg{
+  position: absolute;
+  left: 8.16%;
+  right: 8.28%;
+  top: 8.32%;
+  bottom: 8.16%;
+}
