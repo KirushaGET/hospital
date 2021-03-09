@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Registr from './Registr';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
   <Router>
-    <Registr />
+    <App />
   </Router>,
   document.getElementById('root')
 );

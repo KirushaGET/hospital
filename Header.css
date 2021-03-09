@@ -1,15 +1,16 @@
 .head {
   position: absolute;
-  width: 100vw;
+  display: flex;
+  width: 98vw;
   height: 6vw;
-
   background: #C5E9FF;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .registrH1{
   display: flex;
-  justify-content: center;
+  align-items: center;
+  padding-left: 35vw;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
@@ -19,9 +20,17 @@
 }
 
 .headerImg{
-  position: absolute;
-  left: 8.16%;
-  right: 8.28%;
-  top: 8.32%;
-  bottom: 8.16%;
+  margin-left: 1vw;
+  margin-top: 1vw;
+}
+
+.HeaderExit {
+  display: flex;
+  padding-left: 30vw;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
 }
