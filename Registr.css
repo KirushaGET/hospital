@@ -1,0 +1,98 @@
+.all {
+  position: relative;
+  width: 100vw;
+  height: 100vw;
+  background: rgba(197, 233, 255, 0.72);
+}
+
+.bodyImg {
+  position: absolute;
+  left: 8.33%;
+  top: 15vw;
+}
+
+.registrWindow {
+  position: absolute;
+  width: 30vw;
+  height: 32vw;
+  left: 40vw;
+  top: 10vw;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.registrSpan{
+  margin: 2vw;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.registrUpInput {
+  margin-bottom: 3%;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.inputRegistr { 
+  width: 27vw;
+  height: 3vw;
+  margin-bottom: 3%;
+  margin-left: 1vw; 
+  margin-right: 1vw;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 20pt;
+  padding-left: 1vw;
+}
+
+.buttonRegistr {
+  width: 195px;
+  height: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Roboto;  
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  margin-left: 10vw;
+  padding-left: 1vw;
+}
+
+.signIn {
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 21px;
+}
+
+::placeholder {
+  font-size: 18px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.3);
+  padding-left: 1vw;
+}
