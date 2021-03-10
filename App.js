@@ -15,7 +15,10 @@ function App() {
             <Route path='/signIn' component={SignIn}/>
       </Switch>
       
-      {localStorage.getItem('user') ? (<Switch><Redirect from='/' to='/cab' /></Switch>) :(<Switch><Redirect from='/' to='/signIn' /> </Switch>) }
+      {localStorage.getItem('user') 
+        ? <Switch><Redirect from='/' to='/cab' /></Switch> 
+        : <Switch><Redirect from='/' to='/signIn' /> </Switch> 
+      }
     </div>
   );
 }

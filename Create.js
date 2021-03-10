@@ -9,17 +9,13 @@ function Create() {
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
   let array = [];
+
   const save = async () => {
-    await axios({
-      method:'post',
-      url:'http://localhost:8000/createRequest',
-      timeout: 500,
-      data: {
-        name,
-        doctor,
-        date,
-        complaints
-    }
+    await axios.post('http://localhost:8000/createRequest', {
+      name,
+      doctor,
+      date,
+      complaints
     }).then(res => {
       setName('');
       setDoctor('');
@@ -27,6 +23,7 @@ function Create() {
       setComplaints('');
     })
   }
+  
   const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
   return (
     <div className='string'>
