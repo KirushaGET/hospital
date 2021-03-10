@@ -1,11 +1,15 @@
+.all1 {
+  position: relative;
+  background-color: rgba(197, 233, 255, 0.72);
+}
 
-.bodyImg {
+.bodyImg1 {
   position: absolute;
   left: 8.33%;
   top: 15vw;
 }
 
-.registrWindow {
+.registrWindow1 {
   position: absolute;
   width: 30vw;
   height: 27vw;
@@ -17,7 +21,7 @@
   border-radius: 4px;
 }
 
-.registrSpan{
+.registrSpan1{
   margin: 2vw;
   display: flex;
   justify-content: center;
@@ -29,7 +33,7 @@
   color: #000000;
 }
 
-.registrUpInput {
+.registrUpInput1 {
   margin-bottom: 3%;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -40,7 +44,7 @@
   line-height: 21px;
 }
 
-.inputRegistr { 
+.inputRegistr1 { 
   width: 27vw;
   height: 3vw;
   margin-bottom: 3%;
@@ -54,8 +58,8 @@
   padding-left: 1vw;
 }
 
-.buttonRegistr {
-  width: 195px;
+.buttonRegistr1 {
+  width: 5vw;
   height: 40px;
   font-family: Roboto;
   font-style: normal;
@@ -70,11 +74,11 @@
   color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
-  margin-left: 10vw;
+  margin-left: 12vw;
   padding-left: 1vw;
 }
 
-.signIn {
+.signIn1 {
   display: flex;
   justify-content: center;
   font-family: Roboto;
@@ -82,9 +86,10 @@
   font-weight: 300;
   font-size: 28px;
   line-height: 21px;
+  padding-top: 1vw;
 }
 
-::placeholder {
+::placeholder1 {
   font-size: 18px;
   line-height: 21px;
   color: rgba(0, 0, 0, 0.3);
