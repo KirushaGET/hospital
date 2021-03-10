@@ -4,7 +4,6 @@
 
 .tableTabl {
   margin-left: 1vw;
-  display: flex;
 }
 
 .tableString {
@@ -33,6 +32,15 @@
   padding-bottom: 1vw;
   border: 1px solid #000000;
   width: 19vw;
+}
+
+.bottomPLeft {
+  margin-left: 1vw;
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  border: 1px solid #000000;
+  width: 18vw;
 }
 
 .bottomPEnd1 {

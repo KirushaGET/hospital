@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import './Create.css';
 import { TextField, MenuItem } from '@material-ui/core';
+import { useHistory, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Create() {
@@ -8,9 +9,9 @@ function Create() {
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
-  let array = [];
+  let history = useHistory();
 
-  const save = async () => {
+  const Add = async () => {
     await axios.post('http://localhost:8000/createRequest', {
       name,
       doctor,
@@ -22,8 +23,11 @@ function Create() {
       setDate('');
       setComplaints('');
     })
+
+    history.push('/');
+    history.push('/cab');
   }
-  
+
   const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
   return (
     <div className='string'>
@@ -75,7 +79,7 @@ function Create() {
         }
       ></input>
       </div>
-      <button className='buttonAdd' onClick={() => save()}>Добавить</button>
+      <button className='buttonAdd' onClick={() => Add()}>Добавить</button>
     </div>
   );
 }
