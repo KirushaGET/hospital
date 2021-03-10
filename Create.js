@@ -1,22 +1,40 @@
 import React, { useState, useEffect} from 'react';
 import './Create.css';
+import { TextField, MenuItem } from '@material-ui/core';
+import axios from 'axios';
 
 function Create() {
   const [name, setName] = useState('');
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
-
-  function save() {
-    console.log(name,doctor,date,complaints);
+  let array = [];
+  const save = async () => {
+    await axios({
+      method:'post',
+      url:'http://localhost:8000/createRequest',
+      timeout: 500,
+      data: {
+        name,
+        doctor,
+        date,
+        complaints
+    }
+    }).then(res => {
+      setName('');
+      setDoctor('');
+      setDate('');
+      setComplaints('');
+    })
   }
-
+  const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
   return (
     <div className='string'>
       <div className='name'>
       <span className='spanName'>Имя:</span>
       <input 
         className='InputName' 
+        value={name}
         onChange={(e) => 
           setName(e.target.value)
         }
@@ -24,21 +42,27 @@ function Create() {
       </div>
       <div className='doctor'>
       <span className='spanName'>Врач:</span>
-      <form action="select1.php" method="post" >
-        <p><select className='Range' size='1'>
-         <option  hidden=""></option>
-          <option value="Чебурашка">Чебурашка</option>
-          <option selected value="Крокодил Гена">Крокодил Гена</option>
-          <option value="Шапокляк">Шапокляк</option>
-          <option value="Крыса Лариса">Крыса Лариса</option>
-        </select></p>
-      </form>
+      <TextField
+        id="doctorInput"
+        select
+
+        value={doctor}
+        onChange={(e) => setDoctor(e.target.value)}
+        variant="outlined"
+      >
+        {rangeDoctor.map((value) => (
+          <MenuItem key={value} value={value}>
+            {value}
+          </MenuItem>
+        ))}
+      </TextField>
       </div>
       <div className='date'>
       <span className='spanName'>Дата:</span>
       <input 
         className='InputName' 
         type='date'
+        value={date}
         onChange={(e) => 
           setDate(e.target.value)
         }
@@ -48,6 +72,7 @@ function Create() {
       <span className='spanName'>Жалобы:</span>
       <input 
         className='InputName' 
+        value={complaints}
         onChange={(e) => 
           setComplaints(e.target.value)
         }

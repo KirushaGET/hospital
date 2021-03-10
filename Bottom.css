@@ -1,0 +1,49 @@
+.allTabl {
+  margin-top: 2vw;
+
+}
+
+.tableTabl {
+  margin-left: 1vw;
+  display: flex;
+}
+
+.tableString {
+  background: #C4C4C4;
+  margin-left: 1vw;
+  display: flex;
+}
+
+.bottomP {
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  width: 19vw;
+}
+
+.bottomPEnd {
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  width: 15vw;
+}
+
+.bottomP1 {
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  border: 1px solid #000000;
+  width: 19vw;
+}
+
+.bottomPEnd1 {
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  border: 1px solid #000000;
+  width: 14.5vw;
+}
+
+.but {
+  padding-left: 4vw;
+}

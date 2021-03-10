@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom'
+import { useHistory, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header.js'
+import Header from './Header.js';
 import './SignIn.css';
 
 function SignIn() {
@@ -16,15 +16,9 @@ function SignIn() {
     else if (password.match(regPassword) === null) alert("В пароле должны быть только латинские буквы и 1 цифра")
     else {
       try {
-        console.log("SignIn")
-        await axios({
-        method:'post',
-        url:'http://localhost:8000/signIn',
-        timeout: 500,
-        data: {
+        await axios.post('http://localhost:8000/signIn', {
           login,
           password
-        }
         }).then(res => {
           setLogin('');
           setPassword('');
@@ -36,9 +30,11 @@ function SignIn() {
       }
     }
   }
+
   function registr () {
     history.push('/registr');
   }
+
   return (
     <div className="all1">
       <Header name='Войти в систему'/>

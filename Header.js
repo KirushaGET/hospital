@@ -1,9 +1,8 @@
 import React from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom'
+import { useHistory, Switch, Route } from 'react-router-dom';
 import './Header.css';
 
 function Header({name, exit}) {
-
   let history = useHistory();
   function clear () {
     history.push('/signIn');

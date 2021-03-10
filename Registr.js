@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
-import { useHistory, Switch, Route, Link } from 'react-router-dom'
+import { useHistory, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header.js'
+import Header from './Header.js';
 import './Registr.css';
 
 function App() {
@@ -18,15 +18,9 @@ function App() {
     else if (password.match(regPassword) === null) alert("В пароле должны быть только латинские буквы и 1 цифра")
     else {
      try { 
-       console.log("REgistr")
-        await axios({
-          method:'post',
-          url:'http://localhost:8000/createTask',
-          timeout: 500,
-          data: {
-            login,
-            password
-        }
+        await axios.post('http://localhost:8000/createTask', {
+          login,
+          password
         }).then(res => {
           setLogin('');
           setPassword('');
