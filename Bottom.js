@@ -21,7 +21,7 @@ function Create({table}) {
       <p className='bottom-p' >Дата</p>
       <p className='bottom-p' >Жалобы</p>
     </tr>
-    <tr className='tableTabl' bordercolor='black' >
+    <tr className='table-tabl' bordercolor='black' >
     {
       table.map((value, index) => 
         <tr className='new-string' >
@@ -32,16 +32,16 @@ function Create({table}) {
           <div className='bottom-p-end1'>
             <td>
               <img 
-              src={editImg} 
-              alt={"editImg"} 
-              onClick={() => edit(index)}
+                src={editImg} 
+                alt={"editImg"} 
+                onClick={() => edit(index)}
               />
             </td>
             <td>
               <img 
-              src={deleteImg}
-              alt={"deleteImg"} 
-              onClick={() => del(index)}
+                src={deleteImg}
+                alt={"deleteImg"} 
+                onClick={() => del(index)}
               />
             </td>
           </div>

@@ -11,16 +11,20 @@ function Create() {
   const [complaints, setComplaints] = useState('');
 
   const Add = async () => {
+    let date2 = date.split('-');
+    date2 = date2[2]+'-'+date2[1]+'-'+date2[0];
+
     await axios.post('http://localhost:8000/createRequest', {
       name,
       doctor,
-      date,
+      date:date2,
       complaints
     }).then(res => {
       setName('');
       setDoctor('');
       setDate('');
       setComplaints('');
+
     })
   }
 
@@ -60,9 +64,7 @@ function Create() {
         className='InputName' 
         type='date'
         value={date}
-        onChange={(e) => 
-          setDate(e.target.value)
-        }
+        onChange={(e) => setDate(e.target.value)}
       ></input>
       </div>
       <div className='complaints'>

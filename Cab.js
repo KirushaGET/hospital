@@ -13,14 +13,14 @@ function Cab() {
         setTable(res.data.data);
       });
     }
-    get()
+    get();
   }, [table]);
 
   return (
     <div className='all' >
      <Header name='Приёмы' exit='Выход' />
      <Create />
-     <Bottom table={table}/>
+     <Bottom table = {table}/>
     </div>
   );
 }
