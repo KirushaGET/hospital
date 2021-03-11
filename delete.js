@@ -20,7 +20,7 @@ function Cab() {
     <div className='all' >
      <Header name='Приёмы' exit='Выход' />
      <Create />
-     <Bottom table={table} />
+     <Bottom table = {table}/>
     </div>
   );
 }

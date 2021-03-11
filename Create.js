@@ -12,19 +12,18 @@ function Create() {
 
   const Add = async () => {
     let date2 = date.split('-');
-    date2 = date2[2]+'-'+date2[1]+'-'+date2[0];
+    date2 = date2[2] + '-' + date2[1] + '-' + date2[0];
 
     await axios.post('http://localhost:8000/createRequest', {
       name,
       doctor,
-      date:date2,
+      date: date2,
       complaints
     }).then(res => {
       setName('');
       setDoctor('');
       setDate('');
       setComplaints('');
-
     })
   }
 
