@@ -35,9 +35,7 @@ function Create() {
       <input 
         className='InputName' 
         value={name}
-        onChange={(e) => 
-          setName(e.target.value)
-        }
+        onChange={(e) => setName(e.target.value)}
       ></input>
       </div>
       <div className='doctor'>
@@ -45,7 +43,6 @@ function Create() {
       <TextField
         id="doctorInput"
         select
-
         value={doctor}
         onChange={(e) => setDoctor(e.target.value)}
         variant="outlined"
@@ -71,9 +68,7 @@ function Create() {
       <input 
         className='InputName' 
         value={complaints}
-        onChange={(e) => 
-          setComplaints(e.target.value)
-        }
+        onChange={(e) => setComplaints(e.target.value)}
       ></input>
       </div>
       <button className='buttonAdd' onClick={() => Add()}>Добавить</button>

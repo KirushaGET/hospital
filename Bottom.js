@@ -1,34 +1,44 @@
 import React, { useState, useEffect} from 'react';
-import axios from 'axios';
 import deleteImg from './delete.svg'
 import editImg from './edit.svg'
+import Delete from './delete.js'
+import Edit from './editModal.js'
 import './Bottom.css';
 
 function Create({table}) {
+  const [deleteFlag, setDeleteFlag] = useState(0)
+  const [editFlag, setEditFlag] = useState(0)
+  const [indexDelete, setIndexDelete] = useState(0)
+  const [indexEdit, setIndexEdit] = useState(0)
+  const [idDelete, setIdDelete] = useState(0)
+
   const del = async(index) => {
-    await axios.delete(`http://localhost:8000/deleteTable?_id=${table[index]._id}`);
+    setDeleteFlag(1);
+    setIndexDelete(index);
+    setIdDelete(table[index]._id)
   }
 
   function edit(index) {
-    console.log('edit')
+    setEditFlag(1);
+    setIndexEdit(index)
   }
 
   return (
   <table className='all-tabl' >
     <tr className='table-string' >
-      <p className='bottom-p' >Имя</p>
-      <p className='bottom-p' >Врач</p>
-      <p className='bottom-p' >Дата</p>
-      <p className='bottom-p' >Жалобы</p>
+      <th className='bottom-p'>Имя</th>
+      <th className='bottom-p'>Врач</th>
+      <th className='bottom-p'>Дата</th>
+      <th className='bottom-p'>Жалобы</th>
     </tr>
     <tr className='table-tabl' bordercolor='black' >
     {
       table.map((value, index) => 
         <tr className='new-string' >
-          <td className='bottom-p-left' >{value.name}</td>
-          <td className='bottom-p1' >{value.doctor}</td>
-          <td className='bottom-p1' >{value.date}</td>
-          <td className='bottom-p1' >{value.complaints}</td>
+          <td className='bottom-p-left'>{value.name}</td>
+          <td className='bottom-p1'>{value.doctor}</td>
+          <td className='bottom-p1'>{value.date}</td>
+          <td className='bottom-p1'>{value.complaints}</td>
           <div className='bottom-p-end1'>
             <td>
               <img 
@@ -45,6 +55,24 @@ function Create({table}) {
               />
             </td>
           </div>
+          {deleteFlag 
+          ? <Delete 
+              setDeleteFlag={setDeleteFlag} 
+              deleteFlag={deleteFlag} 
+              index={indexDelete} 
+              id={idDelete}
+          /> 
+          : <div />
+          }
+          {editFlag 
+          ? <Edit 
+              setEditFlag={setEditFlag} 
+              editFlag={editFlag} 
+              table={table} 
+              index={indexEdit}
+            /> 
+          : <div />
+          }
         </tr>
       )
     }
