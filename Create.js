@@ -1,15 +1,14 @@
 import React, { useState, useEffect} from 'react';
-import './Create.css';
 import { TextField, MenuItem } from '@material-ui/core';
-import { useHistory, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import './Create.css';
 
 function Create() {
+
   const [name, setName] = useState('');
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
-  let history = useHistory();
 
   const Add = async () => {
     await axios.post('http://localhost:8000/createRequest', {
@@ -23,9 +22,6 @@ function Create() {
       setDate('');
       setComplaints('');
     })
-
-    history.push('/');
-    history.push('/cab');
   }
 
   const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
