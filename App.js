@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import { useHistory, Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import {Switch, Route, Redirect } from 'react-router-dom';
 import Cab from './Cab.js';
 import Registr from './Registr.js';
 import SignIn from './SignIn.js';

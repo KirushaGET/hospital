@@ -1,44 +1,42 @@
-.allTabl {
+.all-tabl {
   margin-top: 2vw;
 }
 
-.tableTabl {
+.table-tabl {
   margin-left: 1vw;
-  display: flex;
 }
 
-.tableString {
+.table-string {
   background: #C4C4C4;
   margin-left: 1vw;
   display: flex;
 }
 
-.bottomP {
-  padding-top: 1vw;
-  padding-left: 1vw;
-  padding-bottom: 1vw;
+.bottom-p {
+  padding: 1vw 0vw 1vw 1vw;
   width: 19vw;
 }
 
-.bottomPEnd {
-  padding-top: 1vw;
-  padding-left: 1vw;
-  padding-bottom: 1vw;
+.bottom-p-end {
+  padding: 1vw 0vw 1vw 1vw;
   width: 15vw;
 }
 
-.bottomP1 {
-  padding-top: 1vw;
-  padding-left: 1vw;
-  padding-bottom: 1vw;
+.bottom-p1 {
+  padding: 1vw 0vw 1vw 1vw;
   border: 1px solid #000000;
   width: 19vw;
 }
 
-.bottomPEnd1 {
-  padding-top: 1vw;
-  padding-left: 1vw;
-  padding-bottom: 1vw;
+.bottom-p-left {
+  margin-left: 1vw;
+  padding: 1vw 0vw 1vw 1vw;
+  border: 1px solid #000000;
+  width: 18vw;
+}
+
+.bottom-p-end1 {
+  padding: 1vw 0vw 1vw 1vw;
   border: 1px solid #000000;
   width: 14.5vw;
 }

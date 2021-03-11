@@ -1,20 +1,23 @@
 import React, { useState, useEffect} from 'react';
-import './Create.css';
 import { TextField, MenuItem } from '@material-ui/core';
 import axios from 'axios';
+import './Create.css';
 
 function Create() {
+
   const [name, setName] = useState('');
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
-  let array = [];
 
-  const save = async () => {
+  const Add = async () => {
+    let date2 = date.split('-');
+    date2 = date2[2] + '-' + date2[1] + '-' + date2[0];
+
     await axios.post('http://localhost:8000/createRequest', {
       name,
       doctor,
-      date,
+      date: date2,
       complaints
     }).then(res => {
       setName('');
@@ -23,7 +26,7 @@ function Create() {
       setComplaints('');
     })
   }
-  
+
   const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
   return (
     <div className='string'>
@@ -60,9 +63,7 @@ function Create() {
         className='InputName' 
         type='date'
         value={date}
-        onChange={(e) => 
-          setDate(e.target.value)
-        }
+        onChange={(e) => setDate(e.target.value)}
       ></input>
       </div>
       <div className='complaints'>
@@ -75,7 +76,7 @@ function Create() {
         }
       ></input>
       </div>
-      <button className='buttonAdd' onClick={() => save()}>Добавить</button>
+      <button className='buttonAdd' onClick={() => Add()}>Добавить</button>
     </div>
   );
 }
