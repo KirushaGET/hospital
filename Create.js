@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import { TextField, MenuItem, Button } from '@material-ui/core';
 import axios from 'axios';
+import Alert from './Alert';
 import './Create.css';
 
 function Create({get}) {
@@ -8,6 +9,9 @@ function Create({get}) {
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
+  const [alertFlag, setAlertFlag] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertStyle, setAlertStyle] = useState('');
   const rangeDoctor = [
    'Чучалин Александр Николаевич',
    'Александров Никита Михайлович', 
@@ -18,22 +22,38 @@ function Create({get}) {
   const Add = async () => {
     let date2 = date.split('-');
     date2 = date2[2] + '-' + date2[1] + '-' + date2[0];
+    try {
+      await axios.post('http://localhost:8000/createRequest', {
+        name,
+        doctor,
+        date: date2,
+        complaints
+      }).then(res => {
+        if(res.status === 200 || res.status === 201 ||res.status === 202 ) {
+          setName('');
+          setDoctor('');
+          setDate('');
+          setComplaints('');
+          setAlertFlag(true);
+          setAlertMessage('Успешно');
+          setAlertStyle('success');
+        } else {
+          setAlertFlag(true);
+          setAlertMessage('Сервер отправил ответ, но произошла неожиданная ошибка');
+          setAlertStyle('error');
+        }
+      })
 
-    await axios.post('http://localhost:8000/createRequest', {
-      name,
-      doctor,
-      date: date2,
-      complaints
-    }).then(res => {
-      setName('');
-      setDoctor('');
-      setDate('');
-      setComplaints('');
-    })
-    get();
+      get();
+    } catch (e) {
+      setAlertFlag(true);
+      setAlertMessage('Запрос на исполнение не был исполнен');
+      setAlertStyle('error');
+    }
   }
 
   return (
+    <>
     <div className='string'>
       <div className='name'>
       <span className='spanName'>Имя:</span>
@@ -79,8 +99,10 @@ function Create({get}) {
         variant="outlined"
       />
       </div>
-      <Button className='buttonAdd' onClick={() => Add()}>Добавить</Button>
+      <button className='buttonAdd' onClick={() => Add()}>Добавить</button>
     </div>
+    <Alert text={alertMessage} state={alertFlag} setAlertFlag={setAlertFlag} alertStyle={alertStyle}/>
+    </>
   );
 }
 

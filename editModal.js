@@ -102,7 +102,7 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag, ge
               key={`${table[index].date}`}
               onChange={(e) => setDate(e.target.value)}
               variant="outlined"
-             />
+            />
           </div>
           <div className='complaints'>
             <span className='spanName'>Жалобы:</span>

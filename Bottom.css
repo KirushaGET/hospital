@@ -47,3 +47,15 @@
 .but {
   padding-left: 4vw;
 }
+
+.sort {
+  font-size: 30pt;
+  text-align: right;
+  margin-top: 1vw;
+  margin-right: 5vw;
+}
+
+.str-filter {
+  display: flex;
+  margin-left: 65vw;
+}

@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header.js';
+import Alert from './Alert';
 import './SignIn.css';
 
 function SignIn() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [alertFlag, setAlertFlag] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertStyle, setAlertStyle] = useState('');
   const regPassword = /(?=.*[0-9])[A-Za-z0-9]{5,}/;
   let history = useHistory();
   const Sign = async () => {
 
-    if(login.length < 6) alert("Логин должен быть не меньше 6 символов");
-    else if (password.length < 6) alert("Пароль должен быть не меньше 6 символов");
-    else if (password.match(regPassword) === null) alert("В пароле должны быть только латинские буквы и 1 цифра")
+    if(login.length < 6) {
+      setAlertMessage('Логин должен быть не меньше 6 символов');
+    }
+    else if (password.length < 6) {
+      setAlertMessage('Пароль должен быть не меньше 6 символов');
+    } 
+    else if (password.match(regPassword) === null) {
+      setAlertMessage('В пароле должны быть только латинские буквы и 1 цифра');
+    }
     else {
       try {
         await axios.post('http://localhost:8000/signIn', {
@@ -26,9 +36,11 @@ function SignIn() {
           history.push('/cab');
         })
       } catch (e) {
-      alert("Такого пользователя не существует");
+        setAlertMessage('Такого пользователя не существует');
       }
     }
+    setAlertFlag(true);
+    setAlertStyle('error');
   }
 
   function registr () {
@@ -67,6 +79,7 @@ function SignIn() {
           <p className='signIn1' onClick={() => registr()}>Зарегистрироваться</p>
         </div>
       </body>
+      <Alert text={alertMessage} state={alertFlag} setAlertFlag={setAlertFlag} alertStyle={alertStyle}/>
     </div>
   );
 }

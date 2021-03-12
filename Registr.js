@@ -2,20 +2,32 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header.js';
+import Alert from './Alert';
 import './Registr.css';
 
 function App() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [alertFlag, setAlertFlag] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertStyle, setAlertStyle] = useState('');
   const regPassword = /(?=.*[0-9])[A-Za-z0-9]{5,}/;
   let history = useHistory();
 
   const registr = async () => {
-    if(login.length < 6) alert("Логин должен быть не меньше 6 символов");
-    else if (password.length < 6) alert("Пароль должен быть не меньше 6 символов");
-    else if (password2 !== password) alert("Пароли не совпадают");
-    else if (password.match(regPassword) === null) alert("В пароле должны быть только латинские буквы и 1 цифра")
+    if(login.length < 6) {
+      setAlertMessage('Логин должен быть не меньше 6 символов');
+    }
+    else if (password.length < 6) {
+      setAlertMessage('Пароль должен быть не меньше 6 символов');
+    } 
+    else if (password2 !== password) {
+      setAlertMessage('Пароли не совпадают');
+    } 
+    else if (password.match(regPassword) === null) {
+      setAlertMessage('В пароле должны быть только латинские буквы и 1 цифра');
+    }
     else {
      try { 
         await axios.post('http://localhost:8000/createTask', {
@@ -29,9 +41,11 @@ function App() {
           history.push('/cab');
         })
       } catch (e) {
-       alert("Пользователь уже существует");
+        setAlertMessage('Пользователь уже существует');
       }
     }
+    setAlertFlag(true);
+    setAlertStyle('error');
   }
 
   function sign () {
@@ -79,6 +93,7 @@ function App() {
           <p className='signIn' onClick={() => sign()}>Авторизоваться</p>
         </div>
       </body>
+      <Alert text={alertMessage} state={alertFlag} setAlertFlag={setAlertFlag} alertStyle={alertStyle}/>
     </div>
   );
 }
