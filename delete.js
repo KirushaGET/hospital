@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { 
+  Button, 
+  Dialog, 
+  DialogActions, 
+  DialogContent, 
+  DialogContentText, 
+  DialogTitle 
+} from '@material-ui/core';
 import axios from 'axios';
 
 export default function DraggableDialog({deleteFlag, index, id, setDeleteFlag, get}) {

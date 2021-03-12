@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { TextField, MenuItem } from '@material-ui/core';
+import { TextField, MenuItem, Button } from '@material-ui/core';
 import axios from 'axios';
 import './Create.css';
 
@@ -8,7 +8,12 @@ function Create({get}) {
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
-  const rangeDoctor = ['Чучалин Александр Николаевич', 'Александров Никита Михайлович', 'Амосов Николай Михайлович', 'Альбрехт фон Галлер'];
+  const rangeDoctor = [
+   'Чучалин Александр Николаевич',
+   'Александров Никита Михайлович', 
+   'Амосов Николай Михайлович', 
+   'Альбрехт фон Галлер'
+  ];
 
   const Add = async () => {
     let date2 = date.split('-');
@@ -63,7 +68,7 @@ function Create({get}) {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         variant="outlined"
-      ></TextField>
+      />
       </div>
       <div className='complaints'>
       <span className='spanName'>Жалобы:</span>
@@ -72,9 +77,9 @@ function Create({get}) {
         value={complaints}
         onChange={(e) => setComplaints(e.target.value)}
         variant="outlined"
-      ></TextField>
+      />
       </div>
-      <button className='buttonAdd' onClick={() => Add()}>Добавить</button>
+      <Button className='buttonAdd' onClick={() => Add()}>Добавить</Button>
     </div>
   );
 }

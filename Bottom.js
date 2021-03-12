@@ -35,11 +35,11 @@ function Create({table, get}) {
     </thead>
     <tbody className='table-bottom-string' bordercolor='black' >
     {
-      table.map((value, index) => <tr>
-          <td className='bottom-p-left1' key={`${table[index].name}-${index}-${table[index]._id}`}>{value.name}</td>
-          <td className='bottom-p1' key={`${table[index].doctor}-${index}-${table[index]._id}`}>{value.doctor}</td>
-          <td className='bottom-p1' key={`${table[index].date}-${index}-${table[index]._id}`}>{value.date}</td>
-          <td className='bottom-p1' key={`${table[index].complaints}-${index}-${table[index]._id}`}>{value.complaints}</td>
+      table.map((value, index) => <tr key={`string-${index}`}>
+          <td className='bottom-p-left1'>{value.name}</td>
+          <td className='bottom-p1'>{value.doctor}</td>
+          <td className='bottom-p1'>{value.date}</td>
+          <td className='bottom-p1'>{value.complaints}</td>
           <td className='bottom-p-end1'>
               <img 
                 src={editImg} 

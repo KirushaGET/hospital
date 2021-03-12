@@ -18,8 +18,8 @@ function Cab() {
   return (
     <div className='all' >
      <Header name='Приёмы' exit='Выход' />
-     <Create get={get}/>
-     <Bottom table={table} get={get}/>
+     <Create get={get} />
+     <Bottom table={table} get={get} />
     </div>
   );
 }

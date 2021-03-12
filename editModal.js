@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, MenuItem } from '@material-ui/core';
+import { 
+  Button, 
+  Dialog, 
+  DialogActions, 
+  DialogContent, 
+  DialogContentText, 
+  DialogTitle, 
+  TextField, 
+  MenuItem
+} from '@material-ui/core';
 import './Create.css';
 import axios from 'axios';
 
@@ -9,7 +18,12 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag, ge
   const [doctor, setDoctor] = useState(`${table[index].doctor}`);
   const [date, setDate] = useState(`${table[index].date}`);
   const [complaints, setComplaints] = useState(`${table[index].complaints}`);
-  const rangeDoctor = ['Чучалин Александр Николаевич', 'Александров Никита Михайлович', 'Амосов Николай Михайлович', 'Альбрехт фон Галлер'];
+  const rangeDoctor = [
+    'Чучалин Александр Николаевич',
+    'Александров Никита Михайлович', 
+    'Амосов Николай Михайлович', 
+    'Альбрехт фон Галлер'
+  ];
   
   const handleClickOpen = () => {
     setOpen(true);
