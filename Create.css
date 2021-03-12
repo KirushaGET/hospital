@@ -7,6 +7,10 @@
   background-color: white;
 }
 
+#doctorInput {
+  background-color: white;
+}
+
 .spanName {
   font-family: Roboto;
   font-style: normal;
@@ -59,7 +63,6 @@
   width: 18vw;
   margin-right: 1vw;
   margin-left: 1vw;
-  margin-top: 2.1vw;
   height: 3.3vw;
   background-color: white;
   border-radius: 4px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Header.css';
 
 function Header({name, exit}) {

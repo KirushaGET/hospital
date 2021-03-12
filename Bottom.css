@@ -4,6 +4,8 @@
 
 .table-tabl {
   margin-left: 1vw;
+  border-spacing: none;
+  width: 96vw;
 }
 
 .table-string {
@@ -12,32 +14,33 @@
   display: flex;
 }
 
+.table-bottom-string {
+  margin-left: 1vw;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000000;
+}
+
 .bottom-p {
   padding: 1vw 0vw 1vw 1vw;
   width: 19vw;
 }
 
-.bottom-p-end {
-  padding: 1vw 0vw 1vw 1vw;
-  width: 15vw;
-}
-
 .bottom-p1 {
   padding: 1vw 0vw 1vw 1vw;
-  border: 1px solid #000000;
+  border-right: 1px solid #000000;
   width: 19vw;
 }
 
-.bottom-p-left {
+.bottom-p-left1 {
   margin-left: 1vw;
   padding: 1vw 0vw 1vw 1vw;
-  border: 1px solid #000000;
+  border-right: 1px solid #000000;
   width: 18vw;
 }
 
 .bottom-p-end1 {
   padding: 1vw 0vw 1vw 1vw;
-  border: 1px solid #000000;
   width: 14.5vw;
 }
 
