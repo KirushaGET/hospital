@@ -7,20 +7,19 @@ import Bottom from './Bottom.js';
 function Cab() {
   const [table, setTable] = useState([]);
 
-  useEffect(() => {
-    const get = async () => {
-      await axios.get('http://localhost:8000/allTable').then(res => {
-        setTable(res.data.data);
-      });
-    }
-    get();
-  }, [table]);
+  useEffect(() => get(), []);
+
+  const get = async () => {
+    await axios.get('http://localhost:8000/allTable').then(res => {
+      setTable(res.data.data);
+    });
+  }
 
   return (
     <div className='all' >
      <Header name='Приёмы' exit='Выход' />
-     <Create />
-     <Bottom table={table} />
+     <Create get={get}/>
+     <Bottom table={table} get={get}/>
     </div>
   );
 }

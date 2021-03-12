@@ -1,82 +1,81 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import deleteImg from './delete.svg'
 import editImg from './edit.svg'
 import Delete from './delete.js'
 import Edit from './editModal.js'
 import './Bottom.css';
 
-function Create({table}) {
-  const [deleteFlag, setDeleteFlag] = useState(0)
-  const [editFlag, setEditFlag] = useState(0)
-  const [indexDelete, setIndexDelete] = useState(0)
-  const [indexEdit, setIndexEdit] = useState(0)
-  const [idDelete, setIdDelete] = useState(0)
+function Create({table, get}) {
+  const [deleteFlag, setDeleteFlag] = useState(0);
+  const [editFlag, setEditFlag] = useState(0);
+  const [indexDelete, setIndexDelete] = useState(0);
+  const [indexEdit, setIndexEdit] = useState(0);
+  const [idDelete, setIdDelete] = useState(0);
 
   const del = async(index) => {
     setDeleteFlag(1);
     setIndexDelete(index);
-    setIdDelete(table[index]._id)
+    setIdDelete(table[index]._id);
   }
 
   function edit(index) {
     setEditFlag(1);
-    setIndexEdit(index)
+    setIndexEdit(index);
   }
 
   return (
-  <table className='all-tabl' >
+  <table className='all-tabl' cellspacing="0">
+    <thead>
     <tr className='table-string' >
       <th className='bottom-p'>Имя</th>
       <th className='bottom-p'>Врач</th>
       <th className='bottom-p'>Дата</th>
       <th className='bottom-p'>Жалобы</th>
     </tr>
-    <tr className='table-tabl' bordercolor='black' >
+    </thead>
+    <tbody className='table-bottom-string' bordercolor='black' >
     {
-      table.map((value, index) => 
-        <tr className='new-string' >
-          <td className='bottom-p-left'>{value.name}</td>
-          <td className='bottom-p1'>{value.doctor}</td>
-          <td className='bottom-p1'>{value.date}</td>
-          <td className='bottom-p1'>{value.complaints}</td>
-          <div className='bottom-p-end1'>
-            <td>
+      table.map((value, index) => <tr>
+          <td className='bottom-p-left1' key={`${table[index].name}-${index}-${table[index]._id}`}>{value.name}</td>
+          <td className='bottom-p1' key={`${table[index].doctor}-${index}-${table[index]._id}`}>{value.doctor}</td>
+          <td className='bottom-p1' key={`${table[index].date}-${index}-${table[index]._id}`}>{value.date}</td>
+          <td className='bottom-p1' key={`${table[index].complaints}-${index}-${table[index]._id}`}>{value.complaints}</td>
+          <td className='bottom-p-end1'>
               <img 
                 src={editImg} 
                 alt={"editImg"} 
                 onClick={() => edit(index)}
               />
-            </td>
-            <td>
               <img 
                 src={deleteImg}
                 alt={"deleteImg"} 
                 onClick={() => del(index)}
               />
-            </td>
-          </div>
+          </td>
           {deleteFlag 
-          ? <Delete 
+            ? <Delete 
               setDeleteFlag={setDeleteFlag} 
               deleteFlag={deleteFlag} 
               index={indexDelete} 
               id={idDelete}
-          /> 
-          : <div />
+              get={get}
+            /> 
+            : null
           }
           {editFlag 
-          ? <Edit 
+            ? <Edit 
               setEditFlag={setEditFlag} 
               editFlag={editFlag} 
               table={table} 
               index={indexEdit}
-            /> 
-          : <div />
+              get={get}
+              /> 
+            : null
           }
-        </tr>
+          </tr>
       )
     }
-    </tr>
+    </tbody>
   </table>  
   )
 }

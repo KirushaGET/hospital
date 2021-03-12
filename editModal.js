@@ -1,37 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Paper from '@material-ui/core/Paper';
-import { TextField, MenuItem } from '@material-ui/core';
-import Draggable from 'react-draggable';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, MenuItem } from '@material-ui/core';
 import './Create.css';
 import axios from 'axios';
 
-function PaperComponent(props) {
-  return (
-    <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-      <Paper {...props} />
-    </Draggable>
-  );
-}
-
-export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
+export default function DraggableDialog({editFlag, index, table, setEditFlag, get}) {
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState(`${table[index].name}`);
   const [doctor, setDoctor] = useState(`${table[index].doctor}`);
   const [date, setDate] = useState(`${table[index].date}`);
   const [complaints, setComplaints] = useState(`${table[index].complaints}`);
-  const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
+  const rangeDoctor = ['Чучалин Александр Николаевич', 'Александров Никита Михайлович', 'Амосов Николай Михайлович', 'Альбрехт фон Галлер'];
   
   const handleClickOpen = () => {
     setOpen(true);
     let date2 = date.split('-');
     date2 = date2[2] + '-' + date2[1] + '-' + date2[0];
-    console.log(date2)
     setDate(date2);
   };
 
@@ -40,7 +23,6 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
     setEditFlag(0);
     let date2 = date.split('-');
     date2 = date2[2] + '-' + date2[1] + '-' + date2[0];
-    console.log(name,doctor, date2, complaints);
     await axios.patch('http://localhost:8000/updateTable', {
       _id: table[index]._id,
       name,
@@ -48,6 +30,7 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
       date: date2,
       complaints
     })
+    get();
   };
   
   const handleCloseCancel = () => {
@@ -56,13 +39,13 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
 
   useEffect(() => {
     if(editFlag) handleClickOpen();
-  }, [editFlag])
+  }, [editFlag]);
+
   return (
     <div>
       <Dialog
         open={open}
         onClose={handleClose}
-        PaperComponent={PaperComponent}
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
@@ -72,11 +55,12 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
           <DialogContentText>
           <div className='name'>
             <span className='spanName'>Имя:</span>
-            <input 
+            <TextField 
               type='text' 
               value={name} 
               key={`${table[index].name}`}
               onChange={(e) => setName(e.target.value)}
+              variant="outlined"
             />
           </div>
           <div className='doctor'>
@@ -97,21 +81,23 @@ export default function DraggableDialog({editFlag, index, table, setEditFlag}) {
           </div>
           <div className='date'>
             <span className='spanName'>Дата:</span>
-            <input 
+            <TextField 
               type='text'
               type='date'
               value={date} 
               key={`${table[index].date}`}
               onChange={(e) => setDate(e.target.value)}
+              variant="outlined"
              />
           </div>
           <div className='complaints'>
             <span className='spanName'>Жалобы:</span>
-            <input 
+            <TextField 
               type='text' 
               value={complaints} 
               key={`${table[index].complaints}`} 
               onChange={(e) => setComplaints(e.target.value)}
+              variant="outlined"
             />
           </div>
           </DialogContentText>

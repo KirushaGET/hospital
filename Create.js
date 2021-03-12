@@ -1,14 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import { TextField, MenuItem } from '@material-ui/core';
 import axios from 'axios';
 import './Create.css';
 
-function Create() {
-
+function Create({get}) {
   const [name, setName] = useState('');
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [complaints, setComplaints] = useState('');
+  const rangeDoctor = ['Чучалин Александр Николаевич', 'Александров Никита Михайлович', 'Амосов Николай Михайлович', 'Альбрехт фон Галлер'];
 
   const Add = async () => {
     let date2 = date.split('-');
@@ -25,18 +25,19 @@ function Create() {
       setDate('');
       setComplaints('');
     })
+    get();
   }
 
-  const rangeDoctor = ['Чебурашка', 'Крокодил Гена', 'Шапокляк', 'Крыса Лариса'];
   return (
     <div className='string'>
       <div className='name'>
       <span className='spanName'>Имя:</span>
-      <input 
+      <TextField 
         className='InputName' 
         value={name}
         onChange={(e) => setName(e.target.value)}
-      ></input>
+        variant="outlined"
+      ></TextField>
       </div>
       <div className='doctor'>
       <span className='spanName'>Врач:</span>
@@ -56,20 +57,22 @@ function Create() {
       </div>
       <div className='date'>
       <span className='spanName'>Дата:</span>
-      <input 
+      <TextField 
         className='InputName' 
         type='date'
         value={date}
         onChange={(e) => setDate(e.target.value)}
-      ></input>
+        variant="outlined"
+      ></TextField>
       </div>
       <div className='complaints'>
       <span className='spanName'>Жалобы:</span>
-      <input 
+      <TextField 
         className='InputName' 
         value={complaints}
         onChange={(e) => setComplaints(e.target.value)}
-      ></input>
+        variant="outlined"
+      ></TextField>
       </div>
       <button className='buttonAdd' onClick={() => Add()}>Добавить</button>
     </div>
